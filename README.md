@@ -1,16 +1,34 @@
-# travel_ticket_app
+ACHTECTURE BE BASE 
 
-A new Flutter project.
+avant de commencer: 
+telecharger GRADLE 8.2.0
+et mettez le ici dans le dossier : C:\Users\central\gradle\wrapper\dists (pour ceux qui sont sur windows)
+ensuite dans : votre projet \travel_ticket_app\android\gradle\wrapper\gradle-wrapper.properties
 
-## Getting Started
+mettez remplacer la ligne de code , la derniere par : distributionUrl=file:///C:/Users/<nom_utilisateures>/.gradle/wrapper/dists/gradle-8.2-all.zip
 
-This project is a starting point for a Flutter application.
+vous mettez la ligne de code la: 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+lib/
+├── models/
+│   └── user.dart
+│   └── voyage.dart
+├── services/
+│   └── auth_service.dart
+│   └── firebase_service.dart
+├── screens/
+│   ├── auth/
+│   │   └── login_page.dart
+│   │   └── inscription_page.dart
+|   |__splash_screen.dart ( ceci c'etait pour l'icone de chargement (touche pas) )
+|   |__welcome_page.dart  ( ceci c'etait pour le choix Voyageur et Compagnie )
+│   ├── voyageur/
+│   ├── compagnie/
+│   ├── administrateur/
+├── widgets/
+│   └── custom_button.dart
+│   └── custom_logo.dart
+├── utils/
+│   └── constants.dart
+└── main.dart
