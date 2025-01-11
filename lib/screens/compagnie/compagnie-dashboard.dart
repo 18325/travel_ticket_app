@@ -3,6 +3,7 @@ import 'package:travel_ticket_app/widgets/HeaderFlottant.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:travel_ticket_app/widgets/bottom_nav_bar.dart';
 
 class CompagnieDashboard extends StatefulWidget {
   @override
@@ -44,6 +45,10 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
           if (roleId != null) HeaderFlottant(roleId: roleId!),
         ],
       ),
+      // Barre de navigation inférieure
+      bottomNavigationBar: roleId != null
+          ? BottomNavBar(roleId: roleId!) // Afficher la barre si le rôle est défini
+          : null, // Pas de barre tant que le rôle n'est pas chargé
     );
   }
 }
