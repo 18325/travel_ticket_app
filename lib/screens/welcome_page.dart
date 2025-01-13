@@ -53,7 +53,7 @@ class WelcomePage extends StatelessWidget {
 
           // Titre principal
           Text(
-            "Bienvenue dans\nTravel Ticket App",
+            "Travel Ticket",
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class WelcomePage extends StatelessWidget {
 
           // Sous-titre
           Text(
-            "Je souhaite m'inscrire en tant que",
+            "Je souhaite continué en tant que",
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey.shade700,
@@ -76,14 +76,15 @@ class WelcomePage extends StatelessWidget {
 
           const SizedBox(height: 30),
 
-          // Boutons avec animation
+          // Boutons avec navigation
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               // Bouton Voyageur
               ElevatedButton(
                 onPressed: () {
-                  print("Voyageur sélectionné");
+                  // Naviguer vers la page Login
+                  Navigator.pushNamed(context, '/login');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.shade600,
@@ -113,7 +114,8 @@ class WelcomePage extends StatelessWidget {
               // Bouton Compagnie
               ElevatedButton(
                 onPressed: () {
-                  print("Compagnie sélectionnée");
+                  // Naviguer vers la page Login
+                  Navigator.pushNamed(context, '/login');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange.shade600,
