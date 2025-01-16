@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:travel_ticket_app/widgets/bottom_nav_bar.dart';
 
 class VoyageurDashboard extends StatefulWidget {
+  const VoyageurDashboard({super.key});
+
   @override
   _VoyageurDashboardState createState() => _VoyageurDashboardState();
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:travel_ticket_app/widgets/HeaderFlottant.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:travel_ticket_app/widgets/bottom_nav_bar.dart';
 
 class AdminDashboard extends StatefulWidget {
+  const AdminDashboard({super.key});
+
   @override
   _AdminDashboardState createState() => _AdminDashboardState();
 }

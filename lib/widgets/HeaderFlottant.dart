@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class HeaderFlottant extends StatelessWidget {
   final String roleId;
 
-  HeaderFlottant({required this.roleId});
+  const HeaderFlottant({super.key, required this.roleId});
 
   @override
   Widget build(BuildContext context) {

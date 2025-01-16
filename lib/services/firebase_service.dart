@@ -16,7 +16,7 @@ class FirebaseService {
         'created_at': DateTime.now().toIso8601String(),
       });
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -34,7 +34,7 @@ class FirebaseService {
       }
       return voyages;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -48,7 +48,7 @@ class FirebaseService {
         return null;
       }
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -62,7 +62,7 @@ class FirebaseService {
         'date_modification': DateTime.now().toIso8601String(),
       });
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -71,7 +71,7 @@ class FirebaseService {
     try {
       await _firestore.collection('voyages').doc(voyageId).delete();
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

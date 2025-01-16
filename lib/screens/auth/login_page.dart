@@ -3,7 +3,7 @@ import 'package:travel_ticket_app/screens/auth/password_forgot.dart';
 import 'package:travel_ticket_app/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();

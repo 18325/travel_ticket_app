@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BottomNavBar extends StatelessWidget {
   final String roleId; // Le rôle de l'utilisateur (1 = Voyageur, 2 = Compagnie, 3 = Administrateur)
 
-  BottomNavBar({required this.roleId});
+  const BottomNavBar({super.key, required this.roleId});
 
   @override
   Widget build(BuildContext context) {
