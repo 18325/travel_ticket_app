@@ -16,10 +16,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Délai avant de rediriger vers la page d'accueil
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomePage()),
-      );
+      if (mounted) {
+        Navigator.pushReplacement( 
+          context, 
+          MaterialPageRoute(builder: (context) => const WelcomePage()),
+        );
+      }
     });
   }
 
