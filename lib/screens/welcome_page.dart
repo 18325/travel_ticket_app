@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var logger = Logger();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -29,7 +31,7 @@ class WelcomePage extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.black.withOpacity(0.4), Colors.transparent],
+                    colors: [Colors.black.withAlpha(102), Colors.transparent],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                   ),
@@ -83,7 +85,7 @@ class WelcomePage extends StatelessWidget {
               // Bouton Voyageur
               ElevatedButton(
                 onPressed: () {
-                  print("Voyageur sélectionné");
+                  logger.d("Voyageur sélectionné");
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue.shade600,
@@ -113,7 +115,7 @@ class WelcomePage extends StatelessWidget {
               // Bouton Compagnie
               ElevatedButton(
                 onPressed: () {
-                  print("Compagnie sélectionnée");
+                  logger.d("Compagnie sélectionnée");
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange.shade600,
