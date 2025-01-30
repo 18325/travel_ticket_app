@@ -23,9 +23,9 @@ lib/
 │   │   └── inscription_page.dart
 |   |__splash_screen.dart ( ceci c'etait pour l'icone de chargement (touche pas) )
 |   |__welcome_page.dart  ( ceci c'etait pour le choix Voyageur et Compagnie )
-│   ├── voyageur/
-│   ├── compagnie/
-│   ├── administrateur/
+│   ├── voyageur/voyageur-dashboard
+│   ├── compagnie/compagnie-dashboard
+│   ├── administrateur/admin-dashboard.dart
 ├── widgets/
 │   └── custom_button.dart
 │   └── custom_logo.dart

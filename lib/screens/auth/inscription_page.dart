@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travel_ticket_app/services/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({super.key});
 
   @override
   _RegisterPageState createState() => _RegisterPageState();

@@ -1,22 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Import pour vérifier l'état de l'utilisateur
+// Import pour vérifier l'état de l'utilisateur
 import 'package:travel_ticket_app/screens/administrateur/admin-dashboard.dart';
+import 'package:travel_ticket_app/screens/administrateur/ajouter_compagnie_page.dart';
+import 'package:travel_ticket_app/screens/administrateur/ajouter_voyageur_page.dart';
+import 'package:travel_ticket_app/screens/administrateur/detail_utilisateur_page.dart';
+import 'package:travel_ticket_app/screens/administrateur/liste_reservations_page.dart';
+import 'package:travel_ticket_app/screens/administrateur/vue_utilisateurs_page.dart';
 import 'package:travel_ticket_app/screens/auth/password_forgot.dart';
 import 'package:travel_ticket_app/screens/compagnie/compagnie-dashboard.dart';
 import 'package:travel_ticket_app/screens/voyageur/voyageur-dashboard.dart';
-import 'package:travel_ticket_app/services/auth_service.dart';
 import 'screens/splash_screen.dart';
 import 'screens/auth/login_page.dart';
 import 'screens/auth/inscription_page.dart';
 import 'screens/welcome_page.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // Initialisation de Firebase
   runApp(const MyApp());
+  await initializeDateFormatting('fr_FR', null); // 🔥 Initialisation des données locales
+
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -38,6 +48,19 @@ class MyApp extends StatelessWidget {
         '/voyageur_dashboard': (context) =>  VoyageurDashboard(),
         '/compagnie_dashboard': (context) =>  CompagnieDashboard(),
         '/admin_dashboard': (context) =>  AdminDashboard(),
+        '/vue_utilisateurs': (context) => VueUtilisateursPage(), // New route
+        '/detail_utilisateur': (context) => DetailUtilisateurPage(
+              user: ModalRoute.of(context)!.settings.arguments as DocumentSnapshot,
+            ),
+        '/ajouter_compagnie': (context) => AjouterCompagniePage(),
+          '/liste_reservations': (context) => const ListeReservationsPage(),
+          '/ajouter_voyageur': (context) => AjouterVoyageurPage(),
+
+
+
+          
+        
+
       },
       debugShowCheckedModeBanner: false,
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:travel_ticket_app/services/auth_service.dart';
 
 class PasswordForgotPage extends StatefulWidget {
+  const PasswordForgotPage({super.key});
+
   @override
   _PasswordForgotPageState createState() => _PasswordForgotPageState();
 }

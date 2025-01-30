@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RainbowHeader extends StatefulWidget {
-  const RainbowHeader({Key? key}) : super(key: key);
+  const RainbowHeader({super.key});
 
   @override
   _RainbowHeaderState createState() => _RainbowHeaderState();

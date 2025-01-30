@@ -5,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:travel_ticket_app/widgets/bottom_nav_bar.dart';
 
 class VoyageurDashboard extends StatefulWidget {
+  const VoyageurDashboard({super.key});
+
   @override
   _VoyageurDashboardState createState() => _VoyageurDashboardState();
 }
@@ -43,7 +45,7 @@ class _VoyageurDashboardState extends State<VoyageurDashboard> {
             child: roleId == null
                 ? CircularProgressIndicator() // Afficher un loader si le rôle n'est pas encore chargé
                 : Text(
-                    'Bienvenue sur le tableau de bord pour le rôle : $roleId',
+                    'Bienvenue sur le tableau de bord voyageur', 
                     style: TextStyle(fontSize: 18),
                   ),
           ),

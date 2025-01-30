@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class HeaderFlottant extends StatelessWidget {
   final String roleId;
 
-  HeaderFlottant({required this.roleId});
+  const HeaderFlottant({super.key, required this.roleId});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,19 @@ class HeaderFlottant extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Icône de Déconnexion
+            // Icône Menu (maintenant à gauche)
+            IconButton(
+              icon: Icon(Icons.menu, color: Colors.black),
+              onPressed: () {
+                _showMenu(context, roleId); // Afficher le menu en fonction du rôle
+              },
+            ),
+            // Icône de Déconnexion (maintenant à droite)
             IconButton(
               icon: Icon(Icons.logout, color: Colors.red),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacementNamed(context, '/login'); // Redirige vers la page de login
-              },
-            ),
-            // Icône Menu
-            IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () {
-                _showMenu(context, roleId); // Afficher le menu en fonction du rôle
               },
             ),
           ],

@@ -162,4 +162,10 @@ Future<void> passwordForgot(String email) async {
       throw Exception('Erreur lors de la redirection : $e');
     }
   }
+
+
+
+
+
+
 }
