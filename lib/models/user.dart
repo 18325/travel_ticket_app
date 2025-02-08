@@ -32,4 +32,6 @@ class UserModel {
       'role_id': roleId,
     };
   }
+
+  static fromFirestore(Map<String, dynamic> map) {}
 }

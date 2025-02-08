@@ -29,6 +29,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   animated_text_kit: ^4.2.2
   intl: ^0.20.2
+  font_awesome_flutter: ^10.8.0
+  google_fonts: ^6.2.1
+  # flutter_email_sender: ^6.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,32 +1,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-// Import pour vérifier l'état de l'utilisateur
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:travel_ticket_app/models/user.dart';
+import 'package:travel_ticket_app/screens/UserProfilePage.dart';
 import 'package:travel_ticket_app/screens/administrateur/admin-dashboard.dart';
 import 'package:travel_ticket_app/screens/administrateur/ajouter_compagnie_page.dart';
-import 'package:travel_ticket_app/screens/administrateur/ajouter_voyageur_page.dart';
 import 'package:travel_ticket_app/screens/administrateur/detail_utilisateur_page.dart';
 import 'package:travel_ticket_app/screens/administrateur/liste_reservations_page.dart';
 import 'package:travel_ticket_app/screens/administrateur/vue_utilisateurs_page.dart';
 import 'package:travel_ticket_app/screens/auth/password_forgot.dart';
 import 'package:travel_ticket_app/screens/compagnie/compagnie-dashboard.dart';
+import 'package:travel_ticket_app/screens/settings_page.dart';
 import 'package:travel_ticket_app/screens/voyageur/voyageur-dashboard.dart';
+import 'screens/compagnie/ajouter_voyage_page.dart';
+import 'screens/compagnie/liste_voyages_page.dart';
 import 'screens/splash_screen.dart';
 import 'screens/auth/login_page.dart';
 import 'screens/auth/inscription_page.dart';
 import 'screens/welcome_page.dart';
-import 'package:intl/date_symbol_data_local.dart';
-
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Initialisation de Firebase
+  await Firebase.initializeApp();
+  await initializeDateFormatting('fr_FR', null); // 🔥 Initialisation locale
+
   runApp(const MyApp());
-  await initializeDateFormatting('fr_FR', null); // 🔥 Initialisation des données locales
-
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -40,80 +41,27 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/', // Définir la route initiale
       routes: {
-        '/': (context) => const SplashScreen(), // Page de chargement
-        '/welcome': (context) => const WelcomePage(), // Page de choix
-        '/login': (context) => const LoginPage(), // Page de connexion
-        '/inscription': (context) => const RegisterPage(), // Page d'inscription
-        '/forgot_password': (context) => PasswordForgotPage(), // route mot de passe oublié
-        '/voyageur_dashboard': (context) =>  VoyageurDashboard(),
-        '/compagnie_dashboard': (context) =>  CompagnieDashboard(),
-        '/admin_dashboard': (context) =>  AdminDashboard(),
-        '/vue_utilisateurs': (context) => VueUtilisateursPage(), // New route
+        '/': (context) => const SplashScreen(),
+        '/welcome': (context) => const WelcomePage(),
+        '/login': (context) => const LoginPage(),
+        '/inscription': (context) => const RegisterPage(),
+        '/forgot_password': (context) => PasswordForgotPage(),
+        '/voyageur_dashboard': (context) => VoyageurDashboard(),
+        '/compagnie_dashboard': (context) => CompagnieDashboard(),
+        '/admin_dashboard': (context) => AdminDashboard(),
+        '/vue_utilisateurs': (context) => VueUtilisateursPage(),
         '/detail_utilisateur': (context) => DetailUtilisateurPage(
               user: ModalRoute.of(context)!.settings.arguments as DocumentSnapshot,
             ),
         '/ajouter_compagnie': (context) => AjouterCompagniePage(),
-          '/liste_reservations': (context) => const ListeReservationsPage(),
-          '/ajouter_voyageur': (context) => AjouterVoyageurPage(),
-
-
-
-          
-        
-
+        '/liste_reservations': (context) => const ListeReservationsPage(),
+        '/ajouter_voyage': (context) => AjouterVoyagePage(),
+        '/liste_voyages': (context) => ListeVoyagesPage(),
+        '/settings': (context) => SettingsPage(),
+        '/userprofile': (context) => UserProfilePage(
+          user: ModalRoute.of(context)!.settings.arguments as UserModel,
+        ), // Nouvelle route ajoutée
       },
-      debugShowCheckedModeBanner: false,
     );
   }
 }
-
-// class SplashScreen extends StatefulWidget {
-//   const SplashScreen({super.key});
-
-//   @override
-//   _SplashScreenState createState() => _SplashScreenState();
-// }
-
-// class _SplashScreenState extends State<SplashScreen> {
-//   @override
-//   void initState() {
-//     super.initState();
-//   }
-
-  // // Vérifie si l'utilisateur est déjà connecté
-  // Future<void> _checkUserLogin() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-
-  //   if (user != null) {
-  //     // Si l'utilisateur est connecté, redirige en fonction de son rôle
-  //     DocumentSnapshot userDoc = await FirebaseFirestore.instance
-  //         .collection('utilisateurs')
-  //         .doc(user.uid)
-  //         .get();
-  //     String roleId = userDoc['role_id'];
-
-  //     if (roleId == UserRole.voyageur) {
-  //       Navigator.pushReplacementNamed(context, '/voyageur_dashboard');
-  //     } else if (roleId == UserRole.compagnie) {
-  //       Navigator.pushReplacementNamed(context, '/compagnie_dashboard');
-  //     } else if (roleId == UserRole.administrateur) {
-  //       Navigator.pushReplacementNamed(context, '/admin_dashboard');
-  //     } else {
-  //       // Si rôle inconnu
-  //       Navigator.pushReplacementNamed(context, '/login');
-  //     }
-  //   } else {
-  //     // Si l'utilisateur n'est pas connecté, redirige vers la page de login
-  //     Navigator.pushReplacementNamed(context, '/login');
-  //   }
-  // }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: CircularProgressIndicator(), // Page de chargement pendant la vérification
-//       ),
-//     );
-//   }
-// }

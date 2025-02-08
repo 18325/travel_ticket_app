@@ -17,16 +17,24 @@ class HeaderFlottant extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Icône Menu (maintenant à gauche)
+            // Icône Menu (avec effet de survol et animation)
             IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
+              icon: Icon(
+                Icons.menu_rounded, 
+                color: Colors.white, 
+                size: 30, // Taille plus grande pour un meilleur visuel
+              ),
               onPressed: () {
                 _showMenu(context, roleId); // Afficher le menu en fonction du rôle
               },
             ),
-            // Icône de Déconnexion (maintenant à droite)
+            // Icône de Déconnexion (avec design amélioré)
             IconButton(
-              icon: Icon(Icons.logout, color: Colors.red),
+              icon: Icon(
+                Icons.exit_to_app, 
+                color: Colors.redAccent, 
+                size: 30, // Taille plus grande pour plus de visibilité
+              ),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacementNamed(context, '/login'); // Redirige vers la page de login
@@ -54,52 +62,52 @@ class HeaderFlottant extends StatelessWidget {
             children: [
               if (roleId == '1') ...[
                 ListTile(
-                  leading: Icon(Icons.person, color: Colors.blue),
-                  title: Text("Profil Voyageur"),
+                  leading: Icon(Icons.account_circle, color: Colors.blueAccent, size: 30),
+                  title: Text("Profil Voyageur", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers le profil voyageur
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.bookmark, color: Colors.blue),
-                  title: Text("Mes Réservations"),
+                  leading: Icon(Icons.bookmark_border, color: Colors.blueAccent, size: 30),
+                  title: Text("Mes Réservations", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers les réservations
                   },
                 ),
               ] else if (roleId == '2') ...[
                 ListTile(
-                  leading: Icon(Icons.business, color: Colors.green),
-                  title: Text("Profil Compagnie"),
+                  leading: Icon(Icons.business_rounded, color: Colors.green, size: 30),
+                  title: Text("Profil Compagnie", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers le profil compagnie
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.flight_takeoff, color: Colors.green),
-                  title: Text("Mes Voyages"),
+                  leading: Icon(Icons.flight_takeoff_rounded, color: Colors.green, size: 30),
+                  title: Text("Mes Voyages", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers les voyages
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.bar_chart, color: Colors.green),
-                  title: Text("Statistiques"),
+                  leading: Icon(Icons.bar_chart_rounded, color: Colors.green, size: 30),
+                  title: Text("Statistiques", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers les statistiques
                   },
                 ),
               ] else if (roleId == '3') ...[
                 ListTile(
-                  leading: Icon(Icons.people, color: Colors.orange),
-                  title: Text("Gestion des Utilisateurs"),
+                  leading: Icon(Icons.group, color: Colors.orange, size: 30),
+                  title: Text("Gestion des Utilisateurs", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers la gestion des utilisateurs
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.public, color: Colors.orange),
-                  title: Text("Statistiques Globales"),
+                  leading: Icon(Icons.public_rounded, color: Colors.orange, size: 30),
+                  title: Text("Statistiques Globales", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                   onTap: () {
                     // Naviguer vers les statistiques globales
                   },
