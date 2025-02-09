@@ -12,6 +12,7 @@ import 'package:travel_ticket_app/screens/administrateur/vue_utilisateurs_page.d
 import 'package:travel_ticket_app/screens/auth/password_forgot.dart';
 import 'package:travel_ticket_app/screens/compagnie/compagnie-dashboard.dart';
 import 'package:travel_ticket_app/screens/settings_page.dart';
+import 'package:travel_ticket_app/screens/voyageur/payment_screen.dart';
 import 'package:travel_ticket_app/screens/voyageur/voyageur-dashboard.dart';
 import 'screens/compagnie/ajouter_voyage_page.dart';
 import 'screens/compagnie/liste_voyages_page.dart';
@@ -20,11 +21,10 @@ import 'screens/auth/login_page.dart';
 import 'screens/auth/inscription_page.dart';
 import 'screens/welcome_page.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await initializeDateFormatting('fr_FR', null); // 🔥 Initialisation locale
+  await initializeDateFormatting('fr_FR', null);
 
   runApp(const MyApp());
 }
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/', // Définir la route initiale
+      initialRoute: '/', 
       routes: {
         '/': (context) => const SplashScreen(),
         '/welcome': (context) => const WelcomePage(),
@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
         '/admin_dashboard': (context) => AdminDashboard(),
         '/vue_utilisateurs': (context) => VueUtilisateursPage(),
         '/detail_utilisateur': (context) => DetailUtilisateurPage(
-              user: ModalRoute.of(context)!.settings.arguments as DocumentSnapshot,
-            ),
+          user: ModalRoute.of(context)!.settings.arguments as DocumentSnapshot,
+        ),
         '/ajouter_compagnie': (context) => AjouterCompagniePage(),
         '/liste_reservations': (context) => const ListeReservationsPage(),
         '/ajouter_voyage': (context) => AjouterVoyagePage(),
@@ -60,7 +60,8 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsPage(),
         '/userprofile': (context) => UserProfilePage(
           user: ModalRoute.of(context)!.settings.arguments as UserModel,
-        ), // Nouvelle route ajoutée
+        ),
+        '/payment_screen': (context) => PaymentScreen(totalAmount: 0.0, codeTicket: ''),
       },
     );
   }

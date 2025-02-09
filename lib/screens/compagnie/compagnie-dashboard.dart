@@ -56,7 +56,7 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, 
+        automaticallyImplyLeading: false,
         title: const Text(
           "Tableau de bord",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
@@ -70,11 +70,12 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
         ],
       ),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator()) 
+          ? const Center(child: CircularProgressIndicator())
           : Container(
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.orange.shade400, Colors.green.shade600, Colors.blue.shade500],
+                  colors: [Colors.deepPurple.shade400, Colors.indigo.shade600],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -90,27 +91,31 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildDashboardCard(
-                          icon: Icons.add,
-                          title: "Ajouter un Voyage",
-                          onTap: () => Navigator.pushNamed(context, '/ajouter_voyage'),
-                          color: Colors.orange.shade600,
-                        ),
-                        _buildDashboardCard(
-                          icon: Icons.list,
-                          title: "Liste des Voyages",
-                          onTap: () => Navigator.pushNamed(context, '/liste_voyages'),
-                          color: Colors.blue.shade600,
-                          
-                        ),
-                        
-                      ],
-                    ),
+                  GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    children: [
+                      _buildDashboardCard(
+                        icon: Icons.add,
+                        title: "Ajouter un Voyage",
+                        onTap: () => Navigator.pushNamed(context, '/ajouter_voyage'),
+                        color: Colors.orange.shade600,
+                      ),
+                      _buildDashboardCard(
+                        icon: Icons.list,
+                        title: "Liste des Voyages",
+                        onTap: () => Navigator.pushNamed(context, '/liste_voyages'),
+                        color: Colors.blue.shade600,
+                      ),
+                      _buildDashboardCard(
+                        icon: Icons.receipt_long,
+                        title: "Voir Réservations",
+                        onTap: () => Navigator.pushNamed(context, '/liste_reservations'),
+                        color: Colors.purple.shade600,
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -130,7 +135,6 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
-        width: 150,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -146,7 +150,7 @@ class _CompagnieDashboardState extends State<CompagnieDashboard> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 40, color: Colors.white),
+            Icon(icon, size: 50, color: Colors.white),
             const SizedBox(height: 10),
             Text(
               title,

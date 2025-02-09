@@ -157,3 +157,92 @@ Copier le code
   "nombre_reservations": 100,
   "date_mensuelle": "2025-01"
 }
+
+Travel Ticket App - README
+Version 1.0.0
+
+Ce document décrit l'application mobile Travel Ticket App, une application Flutter permettant aux utilisateurs de rechercher, réserver et gérer des voyages. L'application offre des fonctionnalités distinctes pour les voyageurs, les compagnies de transport et les administrateurs.
+
+(Page 1)
+
+I. Introduction
+Travel Ticket App vise à simplifier le processus de réservation de voyages en fournissant une plateforme centralisée pour les voyageurs et les compagnies de transport. Les voyageurs peuvent rechercher des voyages en fonction de leurs critères, visualiser les détails des voyages, réserver des places et effectuer des paiements sécurisés. Les compagnies de transport peuvent gérer leurs voyages, ajouter de nouveaux trajets, et suivre les réservations. Les administrateurs ont une vue d'ensemble du système et peuvent gérer les utilisateurs et les compagnies.
+
+II. Fonctionnalités principales
+Pour les voyageurs:
+
+Recherche de voyages (par ville de départ/arrivée).
+Consultation des détails des voyages (date, prix, places disponibles, type de transport).
+Réservation de places.
+Paiement sécurisé via différents moyens (carte bancaire, PayPal, etc.).
+Consultation des billets.
+Signalement de problèmes.
+Gestion des paramètres utilisateur.
+Pour les compagnies de transport:
+
+Ajout de nouveaux voyages.
+Gestion des voyages existants.
+Visualisation des réservations.
+Consultation des statistiques.
+Pour les administrateurs:
+
+Gestion des utilisateurs (ajout, modification, suppression).
+Gestion des compagnies de transport.
+Visualisation des réservations.
+(Page 2)
+
+III. Architecture de l'application
+L'application est développée avec Flutter et utilise Firebase comme backend. Firebase Authentication gère l'authentification des utilisateurs, tandis que Cloud Firestore stocke les données relatives aux voyages, aux réservations, aux utilisateurs et aux compagnies.
+
+Diagramme d'architecture (Exemple):
+
+[Insérer ici une image de l'architecture de l'application. Par exemple, un diagramme montrant les interactions entre Flutter, Firebase Auth, et Cloud Firestore.]
+
+IV. Installation et configuration
+Cloner le dépôt Git: git clone <URL du dépôt>
+Installer les dépendances: flutter pub get
+Configurer Firebase:
+Créer un projet Firebase.
+Configurer Firebase Authentication.
+Configurer Cloud Firestore.
+Ajouter les fichiers de configuration Firebase à l'application Flutter.
+(Page 3)
+
+V. Utilisation de l'application
+1. Authentification: L'utilisateur doit se connecter ou s'inscrire pour accéder aux fonctionnalités de l'application.
+
+2. Tableau de bord Voyageur: Après la connexion, les voyageurs accèdent à un tableau de bord avec les options suivantes : * Rechercher un voyage: Permet de rechercher des voyages en fonction des villes de départ et d'arrivée. * Mes Réservations: Affiche les réservations effectuées par le voyageur. * Faire un signalement: Permet de signaler un problème. * Paramètres: Permet de gérer les paramètres du compte utilisateur.
+
+3. Tableau de bord Compagnie: Les compagnies de transport peuvent : * Ajouter un Voyage: Permet d'ajouter un nouveau voyage. * Liste des Voyages: Affiche la liste des voyages gérés par la compagnie. * Gérer les Réservations: Affiche les réservations effectuées sur les voyages de la compagnie. * Statistiques: Affiche les statistiques relatives aux voyages et aux réservations.
+
+(Page 4)
+
+4. Tableau de bord Administrateur: Les administrateurs peuvent : * Gérer les Utilisateurs: Permet de gérer les comptes utilisateurs. * Gérer les Compagnies: Permet de gérer les compagnies de transport. * Visualiser les Réservations: Permet de visualiser toutes les réservations effectuées sur la plateforme.
+
+5. Processus de réservation: * L'utilisateur recherche un voyage. * L'utilisateur sélectionne un voyage et le nombre de places. * L'utilisateur est redirigé vers la page de paiement. * Après paiement réussi, l'utilisateur reçoit un billet électronique.
+
+Captures d'écran (Exemples):
+
+[Insérer ici des captures d'écran des différentes pages de l'application : page d'accueil, recherche de voyages, détails d'un voyage, page de paiement, billet électronique, tableau de bord voyageur, tableau de bord compagnie, tableau de bord administrateur.]
+
+(Page 5)
+
+VI. Technologies utilisées
+Flutter
+Firebase Authentication
+Cloud Firestore
+Dart
+Autres packages Dart (uuid, intl, etc.)
+VII. Améliorations futures
+Intégration d'un système de notification.
+Amélioration de l'interface utilisateur et de l'expérience utilisateur.
+Ajout de fonctionnalités de recherche avancée (par date, prix, type de transport).
+Intégration d'un système de géolocalisation.
+Support multilingue.
+VIII. Contribution
+Les contributions au projet sont les bienvenues. Veuillez consulter le fichier CONTRIBUTING.md pour plus d'informations.
+
+IX. Licence
+Ce projet est sous licence [Spécifiez la licence du projet, par exemple MIT].
+
+This extended README provides a more complete overview of your project. Remember to replace the bracketed placeholders with actual content, like diagrams and screenshots. This detailed documentation will greatly improve the understanding and usability of your project. You can also consider adding sections on troubleshooting, known issues, or a FAQ.

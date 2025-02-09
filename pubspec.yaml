@@ -31,6 +31,8 @@ dependencies:
   intl: ^0.20.2
   font_awesome_flutter: ^10.8.0
   google_fonts: ^6.2.1
+  uuid: ^4.5.1
+  lottie: ^3.3.1
   # flutter_email_sender: ^6.0.3
 
 dev_dependencies:
