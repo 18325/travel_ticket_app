@@ -3,6 +3,8 @@ class UserModel {
   final String nom;
   final String email;
   final String roleId;
+  
+
 
   UserModel({
     required this.id,
@@ -30,4 +32,6 @@ class UserModel {
       'role_id': roleId,
     };
   }
+
+  static fromFirestore(Map<String, dynamic> map) {}
 }

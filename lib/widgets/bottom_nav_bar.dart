@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:travel_ticket_app/screens/settings_page.dart';
+import 'package:travel_ticket_app/screens/voyageur/voyageur-dashboard.dart';
+import 'package:travel_ticket_app/screens/compagnie/compagnie-dashboard.dart';
+import 'package:travel_ticket_app/screens/administrateur/admin-dashboard.dart';
 
 class BottomNavBar extends StatelessWidget {
   final String roleId; // Le rôle de l'utilisateur (1 = Voyageur, 2 = Compagnie, 3 = Administrateur)
 
-  BottomNavBar({required this.roleId});
+  const BottomNavBar({super.key, required this.roleId});
 
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      shape: CircularNotchedRectangle(),
+      shape: const CircularNotchedRectangle(),
       notchMargin: 8.0,
       child: Container(
         height: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           boxShadow: [
             BoxShadow(
@@ -25,58 +29,42 @@ class BottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Icône 1 : Accueil
+            // Icône Home : Actualise la page actuelle
             IconButton(
-              icon: Icon(Icons.home_outlined, size: 28),
+              icon: const Icon(Icons.home_outlined, size: 28),
               color: Colors.blue,
               onPressed: () {
-                // Logique pour rediriger vers une page Accueil
-                if (roleId == '1') {
-                  print('Naviguer vers Accueil Voyageur');
-                } else if (roleId == '2') {
-                  print('Naviguer vers Accueil Compagnie');
-                } else if (roleId == '3') {
-                  print('Naviguer vers Accueil Administrateur');
+                Widget destination;
+                switch (roleId) {
+                  case '1':
+                    destination = VoyageurDashboard();
+                    break;
+                  case '2':
+                    destination = CompagnieDashboard();
+                    break;
+                  case '3':
+                    destination = AdminDashboard();
+                    break;
+                  default:
+                    return;
                 }
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => destination),
+                );
               },
             ),
-            // Icône 2 : Section spécifique (par rôle)
+            // Icône Paramètres
             IconButton(
-              icon: Icon(Icons.list_alt_outlined, size: 28),
-              color: Colors.orange,
-              onPressed: () {
-                // Logique pour rediriger vers une page spécifique
-                if (roleId == '1') {
-                  print('Naviguer vers Réservations (Voyageur)');
-                } else if (roleId == '2') {
-                  print('Naviguer vers Gestion des Voyages (Compagnie)');
-                } else if (roleId == '3') {
-                  print('Naviguer vers Gestion des Utilisateurs (Admin)');
-                }
-              },
-            ),
-            // Icône 3 : Statistiques (par rôle)
-            IconButton(
-              icon: Icon(Icons.bar_chart_outlined, size: 28),
-              color: Colors.green,
-              onPressed: () {
-                // Logique pour rediriger vers une page Statistiques
-                if (roleId == '1') {
-                  print('Naviguer vers Statistiques (Voyageur)');
-                } else if (roleId == '2') {
-                  print('Naviguer vers Statistiques des Voyages (Compagnie)');
-                } else if (roleId == '3') {
-                  print('Naviguer vers Statistiques Globales (Admin)');
-                }
-              },
-            ),
-            // Icône 4 : Paramètres
-            IconButton(
-              icon: Icon(Icons.settings_outlined, size: 28),
+              icon: const Icon(Icons.settings_outlined, size: 28),
               color: Colors.grey,
               onPressed: () {
-                // Logique pour rediriger vers une page Paramètres
-                print('Naviguer vers Paramètres');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPage(),
+                  ),
+                );
               },
             ),
           ],
