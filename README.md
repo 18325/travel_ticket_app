@@ -1,68 +1,90 @@
-ACHTECTURE BE BASE 
 
-avant de commencer: 
-telecharger GRADLE 8.2.0
-et mettez le ici dans le dossier : C:\Users\central\gradle\wrapper\dists (pour ceux qui sont sur windows)
-ensuite dans : votre projet \travel_ticket_app\android\gradle\wrapper\gradle-wrapper.properties
 
-mettez remplacer la ligne de code , la derniere par : distributionUrl=file:///C:/Users/<nom_utilisateures>/.gradle/wrapper/dists/gradle-8.2-all.zip
+```markdown
+# 🚀 Travel Ticket App — Architecture de base
 
-vous mettez la ligne de code la: 
+## ⚙️ Avant de commencer
 
+1. **Téléchargez Gradle 8.2.0**  
+   👉 [Lien officiel Gradle 8.2.0](https://gradle.org/releases/)
+
+2. **Placez-le ici** *(pour les utilisateurs Windows)* :  
+```
+
+C:\Users<nom_utilisateur>\gradle\wrapper\dists
+
+```
+
+3. **Modifiez le fichier suivant :**  
+```
+
+<votre_projet>\travel_ticket_app\android\gradle\wrapper\gradle-wrapper.properties
+
+```
+
+4. **Remplacez la dernière ligne par :**  
+```
+
+distributionUrl=file:///C:/Users/<nom_utilisateur>/.gradle/wrapper/dists/gradle-8.2-all.zip
+
+```
+
+---
+
+## 🗂️ Structure du projet Flutter
+
+```
 
 lib/
 ├── models/
-│   └── user.dart
+│   ├── user.dart
 │   └── voyage.dart
+│
 ├── services/
-│   └── auth_service.dart
+│   ├── auth_service.dart
 │   └── firebase_service.dart
+│
 ├── screens/
 │   ├── auth/
-│   │   └── login_page.dart
+│   │   ├── login_page.dart
 │   │   └── inscription_page.dart
-|   |__splash_screen.dart ( ceci c'etait pour l'icone de chargement (touche pas) )
-|   |__welcome_page.dart  ( ceci c'etait pour le choix Voyageur et Compagnie )
+│   │
+│   ├── splash_screen.dart         // Écran de chargement (ne pas modifier)
+│   ├── welcome_page.dart          // Choix : Voyageur ou Compagnie
+│   │
 │   ├── voyageur/
 │   ├── compagnie/
-│   ├── administrateur/
+│   └── administrateur/
+│
 ├── widgets/
-│   └── custom_button.dart
+│   ├── custom_button.dart
 │   └── custom_logo.dart
+│
 ├── utils/
 │   └── constants.dart
+│
 └── main.dart
 
-1. Collection roles
-Document 1:
+````
 
-json
-Copier le code
-{
-  "id": "1",
-  "nom": "Voyageur"
-}
-Document 2:
+---
 
-json
-Copier le code
-{
-  "id": "2",
-  "nom": "Compagnie"
-}
-Document 3:
+## 🧩 Base de données Firestore
 
-json
-Copier le code
-{
-  "id": "3",
-  "nom": "Administrateur"
-}
-2. Collection utilisateurs
-Document 1 (Voyageur) :
+### 1️⃣ **Collection : roles**
 
-json
-Copier le code
+| id | nom           |
+|----|----------------|
+| 1  | Voyageur       |
+| 2  | Compagnie      |
+| 3  | Administrateur |
+
+---
+
+### 2️⃣ **Collection : utilisateurs**
+
+#### 📄 Document 1 (Voyageur)
+```json
 {
   "id": "1",
   "nom": "Jean Dupont",
@@ -74,10 +96,11 @@ Copier le code
   "date_naissance": "1990-01-01",
   "adresse": "10 rue de Paris, France"
 }
-Document 2 (Compagnie) :
+````
 
-json
-Copier le code
+#### 📄 Document 2 (Compagnie)
+
+```json
 {
   "id": "2",
   "nom": "Voyages Express",
@@ -88,10 +111,13 @@ Copier le code
   "role_id": "2",
   "siege_social": "15 avenue des Champs, Paris, France"
 }
-3. Collection notifications
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 3️⃣ **Collection : notifications**
+
+```json
 {
   "id": "1",
   "utilisateur_id": "1",
@@ -99,10 +125,13 @@ Copier le code
   "date_envoi": "2025-01-07",
   "est_lu": false
 }
-4. Collection voyages
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 4️⃣ **Collection : voyages**
+
+```json
 {
   "id": "1",
   "ville_depart": "Paris",
@@ -113,10 +142,13 @@ Copier le code
   "type_transport": "bus",
   "compagnie_id": "2"
 }
-5. Collection reservations
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 5️⃣ **Collection : reservations**
+
+```json
 {
   "id": "1",
   "voyageur_id": "1",
@@ -127,10 +159,13 @@ Copier le code
   "statut": "confirmée",
   "code_ticket": "TICKET12345"
 }
-6. Collection paiements
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 6️⃣ **Collection : paiements**
+
+```json
 {
   "id": "1",
   "reservation_id": "1",
@@ -138,22 +173,45 @@ Copier le code
   "date_paiement": "2025-01-07",
   "statut": "payé"
 }
-7. Collection favoris
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 7️⃣ **Collection : favoris**
+
+```json
 {
   "id": "1",
   "voyageur_id": "1",
   "voyage_id": "1"
 }
-8. Collection statistiques
-Document 1 :
-json
-Copier le code
+```
+
+---
+
+### 8️⃣ **Collection : statistiques**
+
+```json
 {
   "id": "1",
   "compagnie_id": "2",
   "nombre_reservations": 100,
   "date_mensuelle": "2025-01"
 }
+```
+
+---
+
+## 🧱 Résumé
+
+Cette architecture offre :
+
+* Une **base Flutter claire et modulaire**
+* Une **structure Firestore complète** pour gérer les rôles, utilisateurs, voyages et paiements
+* Une **compatibilité assurée** avec **Gradle 8.2.0** pour Android
+
+---
+
+✨ *Projet Travel Ticket App — Système de gestion de voyages et de réservations multi-rôles (Voyageur, Compagnie, Administrateur).*
+
+```
