@@ -289,7 +289,7 @@ Ce projet est sous licence MIT.  Voir le fichier [LICENSE](LICENSE) pour plus de
 
 ## 👤 Auteur
 
-**18325**
+Projet de groupe dont je suis un contributeur **18325**
 
 GitHub:  [@18325](https://github.com/18325)
 
